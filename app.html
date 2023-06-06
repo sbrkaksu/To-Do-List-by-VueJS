@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do-List</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.4">
+  <link rel="stylesheet" href="app.css">
+  <style type="text/css">
+  </style>
+</head>
+<body>
+  <main>
+    <div id="app" v-cloak>
+      <div class="maincontainer">
+        <h1 class="mainHeader">TO DO LIST</h1>
+        <div class="todoContainer">
+          <input type="text" id="add_task_input" placeholder="Add Task!" v-model="addTaskInputValue">
+          <input type="button" id="add_Task_Btn" value="+" title="Add Task!" @click="addTask" >
+        </div>
+ 
+        <div id="newTasksContainer">
+          <div v-for="todo in todos">
+            <input type="checkbox" v-model="todo.checked">
+            <input type="text" :id="todo.task" v-model="todo.task" readonly></input>
+            <img src="./imgs/pencil.png" alt="Edit Task" :class="todo.task" @click.prevent="editTask">
+            <input type="button" value="-" :class="todo.task" @click.prevent="removeTask">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="script.js"></script>
+</body>
+</html>
